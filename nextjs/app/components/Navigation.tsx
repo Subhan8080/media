@@ -7,7 +7,7 @@ export default function Navigation() {
   return (
     <nav className="fixed top-0 w-full bg-black/30 backdrop-blur-md border-b border-zinc-800 z-50 animate-slide-down">
       <div className="container flex justify-between items-center h-[70px]">
-        <Link href="/" className="flex items-center gap-2 text-xl font-bold">
+        <Link href="/home" className="flex items-center gap-2 text-xl font-bold">
           <FaRocket className="text-accent text-2xl" />
           <span>Buzzcraft Studios</span>
         </Link>
