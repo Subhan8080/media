@@ -1,6 +1,40 @@
 // ===========================
-// COUNTDOWN TIMER
+// COUNTER ANIMATION
 // ===========================
+
+function animateCounters() {
+    const statCards = document.querySelectorAll('.stat-card h3');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                const element = entry.target;
+                const targetValue = parseInt(element.textContent);
+                element.classList.add('animated');
+
+                const duration = 2000; // 2 seconds
+                const start = Date.now();
+
+                const animate = () => {
+                    const elapsed = Date.now() - start;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const currentValue = Math.floor(targetValue * progress);
+
+                    element.textContent = currentValue + '+';
+
+                    if (progress < 1) {
+                        requestAnimationFrame(animate);
+                    }
+                };
+
+                animate();
+                observer.unobserve(element);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    statCards.forEach(card => observer.observe(card));
+}
 
 function initCountdown() {
     // Set launch date to 60 days from now
@@ -122,6 +156,9 @@ function saveEmailToLocalStorage(email) {
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize countdown
     initCountdown();
+
+    // Initialize counter animations
+    animateCounters();
 
     // Email input Enter key support
     const emailInputs = document.querySelectorAll('.email-input');

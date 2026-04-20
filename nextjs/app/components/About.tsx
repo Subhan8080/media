@@ -1,19 +1,73 @@
 'use client';
 
+import { useState, useEffect, useRef } from 'react';
+
 export default function About() {
   const stats = [
-    { number: '50+', label: 'Projects Delivered' },
-    { number: '30+', label: 'Happy Clients' },
-    { number: '15+', label: 'Team Members' },
+    { number: 50, label: 'Projects Delivered' },
+    { number: 30, label: 'Happy Clients' },
+    { number: 15, label: 'Team Members' },
   ];
 
+  const [counts, setCounts] = useState([0, 0, 0]);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const animationDuration = 2000; // 2 seconds
+    const startTime = Date.now();
+
+    const animateCount = () => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / animationDuration, 1);
+
+      const newCounts = stats.map((stat) => {
+        return Math.floor(stat.number * progress);
+      });
+
+      setCounts(newCounts);
+
+      if (progress < 1) {
+        requestAnimationFrame(animateCount);
+      } else {
+        setCounts(stats.map((stat) => stat.number));
+      }
+    };
+
+    requestAnimationFrame(animateCount);
+  }, [isVisible, stats]);
+
   return (
-    <section id="about" className="py-20 lg:py-32 relative overflow-hidden">
+    <section id="about" className="py-20 lg:py-32 relative overflow-hidden" ref={sectionRef}>
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 -left-40 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 -right-40 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl"></div>
       </div>
-      <div className="container relative z-10">
+      <div className="container relative z-10 px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
           {/* Text Content */}
           <div className="lg:col-span-3 animate-fade-in-left">
@@ -38,8 +92,8 @@ export default function About() {
                 className="card-service text-center p-6 hover:p-8 border-2 border-cyan-400/40 hover:border-pink-500 transition-all duration-300 hover:scale-105 hover:shadow-glow-bright"
                 style={{ animationDelay: `${index * 0.1}s`, boxShadow: '0 0 20px rgba(0, 255, 255, 0.15)' }}
               >
-                <h3 className="text-5xl font-poppins font-bold gradient-text mb-2 animate-gradient-shift bg-clip-text" style={{backgroundImage: 'linear-gradient(135deg, #ffff00, #ff0099)', backgroundSize: '300% 300%'}}>
-                  {stat.number}
+                <h3 className="text-5xl lg:text-6xl font-poppins font-bold mb-2 gradient-text animate-gradient-shift bg-clip-text" style={{backgroundImage: 'linear-gradient(135deg, #ffff00, #ff0099)', backgroundSize: '300% 300%'}}>
+                  {counts[index]}+
                 </h3>
                 <p className="text-cyan-200 font-semibold">
                   {stat.label}
