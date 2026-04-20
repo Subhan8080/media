@@ -19,21 +19,21 @@ export default function Footer() {
               Elevate your brand. Transform your business.
             </p>
             <div className="flex gap-3 md:gap-4">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="group w-12 h-12 md:w-10 md:h-10 relative flex items-center justify-center rounded-lg transition-all duration-300 hover:scale-125 hover:shadow-glow-bright" style={{border: '2px solid rgba(0, 255, 255, 0.4)', boxShadow: '0 0 15px rgba(0, 255, 255, 0.2)'}}>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="group w-14 h-14 md:w-12 md:h-12 relative flex items-center justify-center rounded-lg transition-all duration-300 hover:scale-125 hover:shadow-glow-bright" style={{border: '2px solid rgba(0, 255, 255, 0.4)', boxShadow: '0 0 15px rgba(0, 255, 255, 0.2)'}}>
                 <div className="absolute inset-0 bg-gradient-to-r from-pink-600/0 to-cyan-400/0 rounded-lg group-hover:from-pink-600/20 group-hover:to-cyan-400/20 transition-all duration-300"></div>
-                <FaLinkedin className="text-lg md:text-base relative z-10 text-cyan-400 group-hover:text-pink-500 transition-colors duration-300" />
+                <FaLinkedin className="text-2xl md:text-xl relative z-10 text-cyan-400 group-hover:text-pink-500 transition-colors duration-300" />
               </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="group w-12 h-12 md:w-10 md:h-10 relative flex items-center justify-center rounded-lg transition-all duration-300 hover:scale-125 hover:shadow-glow-bright" style={{border: '2px solid rgba(255, 0, 153, 0.4)', boxShadow: '0 0 15px rgba(255, 0, 153, 0.2)'}}>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="group w-14 h-14 md:w-12 md:h-12 relative flex items-center justify-center rounded-lg transition-all duration-300 hover:scale-125 hover:shadow-glow-bright" style={{border: '2px solid rgba(255, 0, 153, 0.4)', boxShadow: '0 0 15px rgba(255, 0, 153, 0.2)'}}>
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/0 to-pink-600/0 rounded-lg group-hover:from-cyan-400/20 group-hover:to-pink-600/20 transition-all duration-300"></div>
-                <FaGithub className="text-lg md:text-base relative z-10 text-pink-500 group-hover:text-cyan-400 transition-colors duration-300" />
+                <FaGithub className="text-2xl md:text-xl relative z-10 text-pink-500 group-hover:text-cyan-400 transition-colors duration-300" />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="group w-12 h-12 md:w-10 md:h-10 relative flex items-center justify-center rounded-lg transition-all duration-300 hover:scale-125 hover:shadow-glow-bright" style={{border: '2px solid rgba(255, 255, 0, 0.4)', boxShadow: '0 0 15px rgba(255, 255, 0, 0.2)'}}>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="group w-14 h-14 md:w-12 md:h-12 relative flex items-center justify-center rounded-lg transition-all duration-300 hover:scale-125 hover:shadow-glow-bright" style={{border: '2px solid rgba(255, 255, 0, 0.4)', boxShadow: '0 0 15px rgba(255, 255, 0, 0.2)'}}>
                 <div className="absolute inset-0 bg-gradient-to-r from-pink-600/0 to-yellow-400/0 rounded-lg group-hover:from-pink-600/20 group-hover:to-yellow-400/20 transition-all duration-300"></div>
-                <FaInstagram className="text-lg md:text-base relative z-10 text-yellow-400 group-hover:text-pink-500 transition-colors duration-300" />
+                <FaInstagram className="text-2xl md:text-xl relative z-10 text-yellow-400 group-hover:text-pink-500 transition-colors duration-300" />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="group w-12 h-12 md:w-10 md:h-10 relative flex items-center justify-center rounded-lg transition-all duration-300 hover:scale-125 hover:shadow-glow-bright" style={{border: '2px solid rgba(0, 255, 255, 0.4)', boxShadow: '0 0 15px rgba(0, 255, 255, 0.2)'}}>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="group w-14 h-14 md:w-12 md:h-12 relative flex items-center justify-center rounded-lg transition-all duration-300 hover:scale-125 hover:shadow-glow-bright" style={{border: '2px solid rgba(0, 255, 255, 0.4)', boxShadow: '0 0 15px rgba(0, 255, 255, 0.2)'}}>
                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/0 to-cyan-400/0 rounded-lg group-hover:from-yellow-400/20 group-hover:to-cyan-400/20 transition-all duration-300"></div>
-                <FaTwitter className="text-lg md:text-base relative z-10 text-cyan-400 group-hover:text-yellow-400 transition-colors duration-300" />
+                <FaTwitter className="text-2xl md:text-xl relative z-10 text-cyan-400 group-hover:text-yellow-400 transition-colors duration-300" />
               </a>
             </div>
           </div>

@@ -816,8 +816,8 @@ body {
 }
 
 .social-links a {
-    width: 44px;
-    height: 44px;
+    width: 52px;
+    height: 52px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -828,7 +828,7 @@ body {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    font-size: 18px;
+    font-size: 24px;
     animation: fadeInUp 0.8s ease-out;
 }
 
@@ -1308,9 +1308,9 @@ body {
     }
 
     .social-links a {
-        width: 36px;
-        height: 36px;
-        font-size: 16px;
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
     }
 
     .toast {
@@ -1706,8 +1706,8 @@ body {
     }
 
     .social-links a {
-        width: 32px;
-        height: 32px;
-        font-size: 14px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
     }
 }
