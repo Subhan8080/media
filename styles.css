@@ -3,21 +3,22 @@
    =========================== */
 
 :root {
-    --primary: #7c3aed;
-    --primary-light: #a78bfa;
-    --primary-dark: #6d28d9;
-    --accent: #00d9ff;
-    --accent-2: #ff006e;
+    --primary: #ff0099;
+    --primary-light: #ff33cc;
+    --primary-dark: #cc0066;
+    --accent: #00ffff;
+    --accent-2: #ffff00;
     --accent-3: #00ff88;
-    --bg-dark: #0f0f1e;
-    --bg-darker: #050510;
-    --bg-card: #1a1a2e;
+    --accent-4: #ff00ff;
+    --bg-dark: #0a0015;
+    --bg-darker: #000000;
+    --bg-card: #1a0033;
     --text-primary: #ffffff;
-    --text-secondary: #a0a0b0;
-    --text-tertiary: #6e6e7e;
-    --border-color: #2a2a3e;
-    --success: #10b981;
-    --error: #ef4444;
+    --text-secondary: #e0e0ff;
+    --text-tertiary: #9090b0;
+    --border-color: #4a0080;
+    --success: #00ff88;
+    --error: #ff0066;
 }
 
 * {
@@ -32,10 +33,12 @@ html {
 
 body {
     font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
+    background: linear-gradient(135deg, #000000 0%, #0a0015 50%, #0f0005 100%);
+    background-attachment: fixed;
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
+    perspective: 1000px;
 }
 
 .container {
@@ -93,8 +96,10 @@ body {
 }
 
 .logo i {
-    color: var(--accent);
+    color: var(--accent-2);
     font-size: 24px;
+    text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    animation: glow 2s ease-in-out infinite;
 }
 
 .nav-links {
@@ -147,23 +152,25 @@ body {
 .hero::before {
     content: '';
     position: absolute;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(255, 0, 153, 0.25) 0%, transparent 70%);
     top: 10%;
-    left: -200px;
-    animation: float 6s ease-in-out infinite;
+    left: -300px;
+    animation: float 8s ease-in-out infinite, rotate3d 20s linear infinite;
+    filter: blur(50px);
 }
 
 .hero::after {
     content: '';
     position: absolute;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
-    bottom: -100px;
-    right: -200px;
-    animation: float 8s ease-in-out infinite;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.2) 0%, transparent 70%);
+    bottom: -200px;
+    right: -300px;
+    animation: float 10s ease-in-out infinite reverse, rotate3d 25s linear infinite reverse;
+    filter: blur(50px);
 }
 
 .hero .container {
@@ -188,10 +195,12 @@ body {
     font-weight: 800;
     line-height: 1.2;
     margin-bottom: 20px;
-    background: linear-gradient(135deg, var(--text-primary), var(--accent));
+    background: linear-gradient(135deg, #ff0099, #00ffff, #ffff00, #ff0099);
+    background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: gradientShift 8s ease infinite;
 }
 
 .tagline {
@@ -258,14 +267,17 @@ body {
 
 .btn-primary {
     background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: var(--text-primary);
-    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+    color: var(--bg-darker);
+    box-shadow: 0 8px 30px rgba(255, 0, 153, 0.5),
+                0 0 60px rgba(0, 255, 255, 0.3);
+    font-weight: 700;
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(124, 58, 237, 0.4),
-                0 0 20px rgba(0, 217, 255, 0.2);
+    transform: translateY(-3px) translateZ(10px);
+    box-shadow: 0 15px 50px rgba(255, 0, 153, 0.6),
+                0 0 100px rgba(0, 255, 255, 0.4),
+                inset 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
 .btn-primary:active {
@@ -289,25 +301,27 @@ body {
 .gradient-blob {
     position: absolute;
     border-radius: 50%;
-    filter: blur(50px);
+    filter: blur(80px);
     animation: blbmove 8s ease-in-out infinite;
 }
 
 .blob-1 {
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(124, 58, 237, 0.3), transparent);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 0, 153, 0.4), transparent);
     top: 10%;
     left: 10%;
+    box-shadow: 0 0 100px rgba(255, 0, 153, 0.3);
 }
 
 .blob-2 {
-    width: 250px;
-    height: 250px;
-    background: radial-gradient(circle, rgba(0, 217, 255, 0.2), transparent);
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.3), transparent);
     bottom: 20%;
     right: 10%;
     animation: blbmove 10s ease-in-out infinite reverse;
+    box-shadow: 0 0 100px rgba(0, 255, 255, 0.2);
 }
 
 @keyframes blbmove {
@@ -321,10 +335,10 @@ body {
 
 .floating-card {
     position: absolute;
-    width: 110px;
-    height: 110px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-color);
+    width: 120px;
+    height: 120px;
+    background: rgba(255, 0, 153, 0.15);
+    border: 2px solid var(--accent);
     border-radius: 16px;
     display: flex;
     flex-direction: column;
@@ -333,15 +347,17 @@ body {
     gap: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    animation: float 4s ease-in-out infinite;
+    backdrop-filter: blur(20px);
+    animation: float 4s ease-in-out infinite, spin3d 6s linear infinite;
+    transform-style: preserve-3d;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.3), 0 0 60px rgba(255, 0, 153, 0.2);
 }
 
 .floating-card:hover {
-    background: rgba(124, 58, 237, 0.2);
-    border-color: var(--accent);
-    box-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
-    transform: translateY(-10px);
+    background: rgba(255, 0, 153, 0.3);
+    border-color: var(--accent-2);
+    box-shadow: 0 0 50px rgba(0, 255, 255, 0.6), 0 0 100px rgba(255, 0, 153, 0.4);
+    transform: translateY(-15px) rotateY(180deg);
 }
 
 .floating-card i {
@@ -401,14 +417,15 @@ body {
 
 .badge {
     display: inline-block;
-    padding: 8px 20px;
-    background: rgba(124, 58, 237, 0.2);
-    border: 1px solid rgba(124, 58, 237, 0.5);
+    padding: 10px 24px;
+    background: linear-gradient(135deg, rgba(255, 0, 153, 0.3), rgba(0, 255, 255, 0.2));
+    border: 2px solid var(--accent);
     border-radius: 50px;
     font-size: 13px;
-    font-weight: 600;
-    color: var(--primary-light);
+    font-weight: 700;
+    color: var(--accent);
     margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
 }
 
 .coming-soon-badge h2 {
@@ -416,10 +433,12 @@ body {
     font-size: 48px;
     font-weight: 700;
     margin-bottom: 20px;
-    background: linear-gradient(135deg, var(--accent), var(--primary));
+    background: linear-gradient(135deg, var(--primary), var(--accent), var(--accent-2));
+    background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: gradientShift 8s ease infinite;
 }
 
 .coming-soon-badge p {
@@ -436,9 +455,9 @@ body {
 .countdown-section {
     padding: 80px 0;
     text-align: center;
-    background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(0, 217, 255, 0.05));
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
+    background: linear-gradient(135deg, rgba(255, 0, 153, 0.1), rgba(0, 255, 255, 0.08));
+    border-top: 2px solid rgba(0, 255, 255, 0.3);
+    border-bottom: 2px solid rgba(255, 0, 153, 0.3);
 }
 
 .countdown-section h2 {
@@ -467,10 +486,12 @@ body {
     font-family: 'Poppins', sans-serif;
     font-size: 56px;
     font-weight: 800;
-    background: linear-gradient(135deg, var(--accent), var(--primary));
+    background: linear-gradient(135deg, var(--primary), var(--accent), var(--accent-2));
+    background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: gradientShift 8s ease infinite;
     line-height: 1;
     margin-bottom: 12px;
     min-width: 120px;
@@ -579,10 +600,12 @@ body {
     font-size: 48px;
     font-weight: 700;
     margin-bottom: 20px;
-    background: linear-gradient(135deg, var(--text-primary), var(--accent));
+    background: linear-gradient(135deg, var(--primary), var(--accent), var(--accent-2));
+    background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: gradientShift 8s ease infinite;
 }
 
 .section-header p {
@@ -598,14 +621,15 @@ body {
 
 .service-card {
     padding: 40px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid var(--border-color);
+    background: rgba(255, 0, 153, 0.08);
+    border: 2px solid rgba(0, 255, 255, 0.3);
     border-radius: 16px;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
     cursor: pointer;
     position: relative;
     overflow: hidden;
     animation: fadeInUp 0.8s ease-out;
+    transform-style: preserve-3d;
 }
 
 .service-card::before {
@@ -622,10 +646,12 @@ body {
 }
 
 .service-card:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: var(--accent);
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 217, 255, 0.15);
+    background: rgba(255, 0, 153, 0.25);
+    border-color: var(--accent-2);
+    transform: translateY(-20px) rotateX(-5deg) rotateY(5deg);
+    box-shadow: 0 30px 60px rgba(0, 255, 255, 0.25),
+                0 0 60px rgba(255, 0, 153, 0.2),
+                inset 0 0 30px rgba(255, 0, 153, 0.1);
 }
 
 .service-card:hover::before {
@@ -638,21 +664,22 @@ body {
 }
 
 .service-icon {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     background: linear-gradient(135deg, var(--primary), var(--accent));
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
+    font-size: 32px;
     color: var(--text-primary);
     margin-bottom: 20px;
     transition: all 0.3s ease;
+    box-shadow: 0 0 30px rgba(255, 0, 153, 0.4), 0 0 60px rgba(0, 255, 255, 0.2);
 }
 
 .service-card:hover .service-icon {
-    transform: scale(1.1) rotate(5deg);
+    transform: scale(1.2) rotate(10deg) rotateY(20deg);
 }
 
 .service-card h3 {
@@ -862,33 +889,81 @@ body {
 @keyframes fadeInLeft {
     from {
         opacity: 0;
-        transform: translateX(-30px);
+        transform: translateX(-50px) rotateY(20deg);
     }
     to {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateX(0) rotateY(0deg);
     }
 }
 
 @keyframes fadeInRight {
     from {
         opacity: 0;
-        transform: translateX(30px);
+        transform: translateX(50px) rotateY(-20deg);
     }
     to {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateX(0) rotateY(0deg);
     }
 }
 
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(40px) rotateX(10deg);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) rotateX(0deg);
+    }
+}
+
+@keyframes spin3d {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    33% {
+        transform: rotateX(10deg) rotateY(45deg) rotateZ(0deg);
+    }
+    66% {
+        transform: rotateX(-10deg) rotateY(-45deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes rotate3d {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    50% {
+        transform: rotateX(20deg) rotateY(45deg);
+    }
+    100% {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 40px rgba(0, 255, 255, 0.8), 0 0 60px rgba(255, 0, 153, 0.4);
     }
 }
 
@@ -897,62 +972,161 @@ body {
    =========================== */
 
 @media (max-width: 768px) {
+    .navbar {
+        fixed-backgrop: blur(8px);
+    }
+
     .navbar .container {
-        padding: 0 20px;
+        padding: 0 16px;
+    }
+
+    .nav-content {
+        height: 60px;
+    }
+
+    .logo {
+        font-size: 16px;
+        gap: 8px;
+    }
+
+    .logo i {
+        font-size: 20px;
     }
 
     .nav-links {
-        gap: 20px;
+        gap: 16px;
+        font-size: 13px;
+    }
+
+    .hero {
+        min-height: auto;
+        padding-top: 60px;
+        padding-bottom: 40px;
     }
 
     .hero-content {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 30px;
     }
 
     .hero-title {
-        font-size: 48px;
+        font-size: 44px;
+        line-height: 1.1;
+        margin-bottom: 16px;
     }
 
     .tagline {
-        font-size: 20px;
+        font-size: 18px;
+        margin-bottom: 16px;
     }
 
     .hero-subtitle {
-        font-size: 15px;
+        font-size: 14px;
+        margin-bottom: 28px;
     }
 
     .hero-visual {
-        height: 350px;
+        height: 280px;
+        display: none;
+    }
+
+    .floating-card {
+        width: 100px;
+        height: 100px;
+        font-size: 12px;
+    }
+
+    .floating-card i {
+        font-size: 28px;
+    }
+
+    .hero::before,
+    .hero::after {
+        width: 300px;
+        height: 300px;
+    }
+
+    .gradient-blob {
+        width: 250px;
+        height: 250px;
+        filter: blur(40px);
     }
 
     .email-form {
         flex-direction: column;
+        gap: 10px;
+        max-width: 100%;
     }
 
     .email-input {
         width: 100%;
+        padding: 12px 16px;
+        font-size: 14px;
     }
 
     .btn {
         width: 100%;
+        padding: 12px 24px;
+        font-size: 13px;
+        min-height: 44px;
+    }
+
+    .form-note {
+        font-size: 12px;
+    }
+
+    .coming-soon-badge {
+        padding: 60px 0;
+    }
+
+    .badge {
+        padding: 8px 16px;
+        font-size: 12px;
+        margin-bottom: 16px;
     }
 
     .coming-soon-badge h2 {
-        font-size: 36px;
+        font-size: 32px;
+        margin-bottom: 16px;
+    }
+
+    .coming-soon-badge p {
+        font-size: 15px;
+    }
+
+    .countdown-section {
+        padding: 60px 0;
     }
 
     .countdown-section h2 {
-        font-size: 32px;
+        font-size: 28px;
+        margin-bottom: 40px;
+    }
+
+    .countdown {
+        gap: 12px;
+    }
+
+    .countdown-item {
+        min-width: 70px;
     }
 
     .countdown-number {
-        font-size: 42px;
-        min-width: 100px;
+        font-size: 38px;
+        min-width: 80px;
+    }
+
+    .countdown-label {
+        font-size: 12px;
+        margin-top: 8px;
     }
 
     .countdown-divider {
-        font-size: 32px;
+        font-size: 28px;
+    }
+
+    .about {
+        padding: 60px 0;
     }
 
     .about-content {
@@ -961,23 +1135,100 @@ body {
     }
 
     .about-text h2 {
-        font-size: 36px;
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+
+    .about-text p {
+        font-size: 15px;
+        margin-bottom: 16px;
+    }
+
+    .stat-card {
+        padding: 24px;
+        transition: all 0.2s ease;
+    }
+
+    .stat-card h3 {
+        font-size: 32px;
+    }
+
+    .stat-card p {
+        font-size: 13px;
+    }
+
+    .services {
+        padding: 60px 0;
+    }
+
+    .section-header {
+        margin-bottom: 40px;
+    }
+
+    .section-header h2 {
+        font-size: 32px;
+        margin-bottom: 16px;
+    }
+
+    .section-header p {
+        font-size: 15px;
     }
 
     .services-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
 
-    .section-header h2 {
-        font-size: 36px;
+    .service-card {
+        padding: 24px;
+        border-radius: 12px;
+        transform: none;
+        animation: fadeInUp 0.6s ease-out;
+    }
+
+    .service-card:hover {
+        transform: translateY(-8px);
+    }
+
+    .service-icon {
+        width: 56px;
+        height: 56px;
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+
+    .service-card h3 {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+
+    .service-card p {
+        font-size: 13px;
+        margin-bottom: 16px;
+    }
+
+    .service-features li {
+        font-size: 12px;
+        gap: 8px;
+    }
+
+    .cta-section-main {
+        padding: 60px 0;
     }
 
     .cta-section-main h2 {
-        font-size: 32px;
+        font-size: 28px;
+        margin-bottom: 16px;
+    }
+
+    .cta-section-main p {
+        font-size: 15px;
+        margin-bottom: 32px;
     }
 
     .email-form-large {
         flex-direction: column;
+        max-width: 100%;
     }
 
     .email-form-large .email-input {
@@ -989,85 +1240,415 @@ body {
     }
 
     .footer-content {
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
+        grid-template-columns: 1fr;
+        gap: 28px;
+        margin-bottom: 28px;
+    }
+
+    .footer-section h4,
+    .footer-section h5 {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .footer-section p {
+        font-size: 13px;
+    }
+
+    .social-links {
+        gap: 10px;
+    }
+
+    .social-links a {
+        width: 36px;
+        height: 36px;
     }
 
     .toast {
-        bottom: 20px;
-        right: 20px;
-        left: 20px;
+        bottom: 16px;
+        right: 16px;
+        left: 16px;
+        padding: 14px 20px;
+        font-size: 13px;
+        border-radius: 6px;
+    }
+
+    /* Reduce 3D effects on tablet */
+    .floating-card {
+        animation: float 4s ease-in-out infinite;
+    }
+
+    .service-card:hover::before {
+        opacity: 0.5;
     }
 }
 
 @media (max-width: 480px) {
-    .hero-title {
-        font-size: 36px;
-    }
-
-    .tagline {
-        font-size: 18px;
-    }
-
-    .hero-subtitle {
+    html {
         font-size: 14px;
     }
 
-    .coming-soon-badge h2 {
-        font-size: 28px;
+    .navbar .container {
+        padding: 0 12px;
     }
 
-    .coming-soon-badge p {
-        font-size: 16px;
+    .nav-content {
+        height: 56px;
+        padding: 0 12px;
     }
 
-    .countdown-section h2 {
-        font-size: 24px;
-        margin-bottom: 30px;
+    .logo {
+        font-size: 14px;
+        gap: 6px;
     }
 
-    .countdown {
-        gap: 10px;
+    .logo i {
+        font-size: 18px;
     }
 
-    .countdown-number {
-        font-size: 32px;
-    }
-
-    .countdown-label {
+    .nav-links {
+        gap: 12px;
         font-size: 12px;
     }
 
+    .nav-links a {
+        padding: 4px 8px;
+    }
+
+    .hero {
+        padding-top: 56px;
+        padding-bottom: 32px;
+    }
+
+    .hero-content {
+        gap: 24px;
+    }
+
+    .hero-title {
+        font-size: 32px;
+        margin-bottom: 12px;
+    }
+
+    .tagline {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+        font-size: 13px;
+        margin-bottom: 20px;
+        max-width: 100%;
+    }
+
+    .hero::before {
+        width: 200px;
+        height: 200px;
+        left: -150px;
+    }
+
+    .hero::after {
+        width: 200px;
+        height: 200px;
+        right: -150px;
+        bottom: -50px;
+    }
+
+    .email-form {
+        gap: 8px;
+    }
+
+    .email-input {
+        padding: 11px 14px;
+        font-size: 13px;
+        border-radius: 6px;
+    }
+
+    .btn {
+        padding: 11px 20px;
+        font-size: 12px;
+        min-height: 40px;
+        border-radius: 6px;
+    }
+
+    .btn-primary {
+        box-shadow: 0 4px 15px rgba(255, 0, 153, 0.3);
+    }
+
+    .form-note {
+        font-size: 11px;
+        margin-top: 8px;
+    }
+
+    .coming-soon-badge {
+        padding: 48px 0;
+    }
+
+    .badge {
+        padding: 7px 14px;
+        font-size: 11px;
+        margin-bottom: 12px;
+    }
+
+    .coming-soon-badge h2 {
+        font-size: 26px;
+        margin-bottom: 12px;
+        line-height: 1.2;
+    }
+
+    .coming-soon-badge p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .countdown-section {
+        padding: 48px 0;
+    }
+
+    .countdown-section h2 {
+        font-size: 22px;
+        margin-bottom: 32px;
+    }
+
+    .countdown {
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .countdown-item {
+        min-width: 60px;
+    }
+
+    .countdown-number {
+        font-size: 28px;
+        min-width: 70px;
+    }
+
+    .countdown-label {
+        font-size: 10px;
+        margin-top: 4px;
+        letter-spacing: 0.5px;
+    }
+
     .countdown-divider {
-        font-size: 24px;
+        font-size: 20px;
+        padding: 0 4px;
+    }
+
+    .about {
+        padding: 48px 0;
+    }
+
+    .about-content {
+        gap: 28px;
     }
 
     .about-text h2 {
-        font-size: 28px;
+        font-size: 26px;
+        margin-bottom: 16px;
     }
 
     .about-text p {
-        font-size: 15px;
+        font-size: 14px;
+        margin-bottom: 12px;
+        line-height: 1.6;
+    }
+
+    .about-stats {
+        gap: 16px;
+    }
+
+    .stat-card {
+        padding: 20px;
+    }
+
+    .stat-card h3 {
+        font-size: 28px;
+        margin-bottom: 8px;
+    }
+
+    .stat-card p {
+        font-size: 12px;
+    }
+
+    .services {
+        padding: 48px 0;
+    }
+
+    .section-header {
+        margin-bottom: 32px;
     }
 
     .section-header h2 {
-        font-size: 28px;
+        font-size: 26px;
+        margin-bottom: 12px;
+        line-height: 1.2;
     }
 
     .section-header p {
+        font-size: 14px;
+    }
+
+    .services-grid {
+        gap: 16px;
+    }
+
+    .service-card {
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .service-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+
+    .service-card h3 {
         font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .service-card p {
+        font-size: 12px;
+        margin-bottom: 12px;
+    }
+
+    .service-features {
+        gap: 8px;
+    }
+
+    .service-features li {
+        font-size: 11px;
+        gap: 6px;
+    }
+
+    .service-features i {
+        font-size: 10px;
+    }
+
+    .cta-section-main {
+        padding: 48px 0;
     }
 
     .cta-section-main h2 {
-        font-size: 24px;
+        font-size: 22px;
+        margin-bottom: 12px;
+        line-height: 1.2;
     }
 
     .cta-section-main p {
-        font-size: 16px;
+        font-size: 14px;
+        margin-bottom: 24px;
+    }
+
+    .email-form-large {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .email-form-large .email-input {
+        width: 100%;
+        padding: 11px 14px;
+    }
+
+    .email-form-large .btn {
+        width: 100%;
+        padding: 11px 20px;
+    }
+
+    .footer {
+        padding: 40px 0 16px;
     }
 
     .footer-content {
-        grid-template-columns: 1fr;
         gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    .footer-section h4 {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .footer-section h5 {
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+
+    .footer-section p {
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 8px;
+    }
+
+    .footer-section ul li a {
+        font-size: 12px;
+    }
+
+    .social-links {
+        gap: 8px;
+    }
+
+    .social-links a {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+
+    .footer-bottom {
+        padding-top: 16px;
+        font-size: 11px;
+    }
+
+    .toast {
+        bottom: 12px;
+        right: 12px;
+        left: 12px;
+        padding: 12px 16px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 28px;
+    }
+
+    .tagline {
+        font-size: 14px;
+    }
+
+    .hero-subtitle {
+        font-size: 12px;
+    }
+
+    .btn {
+        padding: 10px 16px;
+        font-size: 11px;
+    }
+
+    .coming-soon-badge h2 {
+        font-size: 22px;
+    }
+
+    .countdown-section h2 {
+        font-size: 20px;
+        margin-bottom: 24px;
+    }
+
+    .countdown-number {
+        font-size: 24px;
+    }
+
+    .section-header h2 {
+        font-size: 22px;
+    }
+
+    .service-card {
+        padding: 16px;
     }
 }
